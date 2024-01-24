@@ -1,30 +1,41 @@
-# React + TypeScript + Vite
+# Document Uploader + Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## This project is a research based project for finding ways to parse and view different types of files and documents including -
 
-Currently, two official plugins are available:
+## 1) .docx/ .doc: Microsoft Word Document
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 2) .pptx/ .ppt: Microsoft PowerPoint Presentation
 
-## Expanding the ESLint configuration
+## 3) .xlsx/ .xls: Microsoft Excel Spreadsheet (older format)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 4) .pdf: Portable Document Format (Adobe Acrobat)
 
-- Configure the top-level `parserOptions` property like this:
+## 5) .csv: Comma-Separated Values (plain text format for spreadsheet data)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## 6) .txt: Plain Text Document
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 7) .rtf: Rich Text Format
+
+## 8) .odt: Open Document Text (used by LibreOffice and OpenOffice)
+
+## 9) .ods: Open Document Spreadsheet (used by LibreOffice and OpenOffice)
+
+## 10) .odp: Open Document Presentation (used by LibreOffice and OpenOffice)
+
+## 11) .pages: Apple Pages Document
+
+## 12) .numbers: Apple Numbers Spreadsheet
+
+## 13) .key: Apple Keynote Presentation
+
+## 14) .html, .htm: Hypertext Markup Language (web pages)
+
+## 15) .xml: eXtensible Markup Language (used for structured data)
+
+## 16) .json: JavaScript Object Notation (used for data interchange)
+
+## 17) .csv: Comma-Separated Values (plain text format for spreadsheet data)
+
+## 18) Other formats including images, compressed files, etc.
+
+# Built with ❤️ by Utkarsh
