@@ -4,6 +4,7 @@ import {
   getStorage,
   ref,
   FirebaseStorage,
+  UploadResult,
 } from 'firebase/storage';
 
 class FirebaseFunctions {
@@ -24,13 +25,24 @@ class FirebaseFunctions {
     this.#storage = getStorage(this.#app);
   }
 
-  uploadFile(file: File) {
+  uploadFile(file: File): Promise<UploadResult> | undefined {
     try {
       const storageRef = ref(this.#storage, file.name);
       return uploadBytes(storageRef, file);
     } catch (error) {
       console.trace(error);
-      alert('Something went wrong file uploading file');
+      alert('Something went wrong while uploading file');
+    }
+  }
+
+  uploadMultipleFiles(
+    files: Array<File>
+  ): Promise<Array<UploadResult | undefined>> | undefined {
+    try {
+      return Promise.all(files.map((file) => this.uploadFile(file)));
+    } catch (error) {
+      console.trace(error);
+      alert('Something went wrong while uploading files');
     }
   }
 }
