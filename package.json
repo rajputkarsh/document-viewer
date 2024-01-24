@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@files-ui/react": "1.2.2",
+    "firebase": "^10.7.2",
     "i": "0.3.7",
     "lottie-web": "5.12.2",
     "npm": "10.3.0",
