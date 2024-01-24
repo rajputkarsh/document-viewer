@@ -1,5 +1,6 @@
-import { Dropzone, ExtFile, FileMosaic } from '@files-ui/react';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { Dropzone, ExtFile, FileMosaic } from '@files-ui/react';
 
 function Uploader() {
   const [files, setFiles] = useState<Array<ExtFile>>([]);
@@ -10,27 +11,38 @@ function Uploader() {
     setFiles(files.filter((x) => x.id !== id));
   };
 
-  const handleUploadStart = (files: Array<ExtFile>) => {};
+  const handleUpload = () => {
+    console.log(`inside handleUploadStart - `, files);
+    if (!files || !files.length) {
+      toast.error('No Files Selected!');
+      return;
+    }
 
-  const handleUploadFinish = (files: Array<ExtFile>) => {};
+    console.log(`files - `, files);
+  };
+
+  const handleUploadFinish = (files: Array<ExtFile>) => {
+    let message = 'File Uploaded!';
+    if (files.length > 1) {
+      message = 'Files Uploaded!';
+    }
+
+    toast.success(message);
+  };
 
   return (
-    <Dropzone
-      onChange={updateFiles}
-      value={files}
-      onUploadStart={handleUploadStart}
-      onUploadFinish={handleUploadFinish}
-      actionButtons={{
-        position: 'after',
-        abortButton: {},
-        deleteButton: {},
-        uploadButton: {},
-      }}
-    >
-      {files.map((file) => (
-        <FileMosaic key={file.id} {...file} onDelete={removeFile} info />
-      ))}
-    </Dropzone>
+    <>
+      <Dropzone
+        onChange={updateFiles}
+        value={files}
+        onUploadFinish={handleUploadFinish}
+      >
+        {files.map((file) => (
+          <FileMosaic key={file.id} {...file} onDelete={removeFile} info />
+        ))}
+      </Dropzone>
+      <button onClick={handleUpload}>Upload</button>
+    </>
   );
 }
 

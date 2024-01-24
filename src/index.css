@@ -54,6 +54,16 @@ button:focus-visible {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .fui-dropzone-root {
+    max-width: 80%;
+  }
+
+  button {
+    margin-block-start: 1rem;
+    background-color: #535bf2;
+    color: #fff;
+  }
 }
 
 .loader {
