@@ -49,7 +49,7 @@ function DocumentList() {
                 <td>{f.name}</td>
                 <td>{f.uploadedOn}</td>
                 <td>
-                  <Link target="_blank" to={`/view/${f.id}`}>
+                  <Link to={`/view/${f.id}`}>
                     <button>View</button>
                   </Link>
                 </td>
