@@ -29,13 +29,14 @@ function Uploader() {
       const saveData = (uploadedFiles || [])
         .filter((uf) => uf?.url)
         .map((uf) => ({
+          id: crypto.randomUUID(),
           name: uf?.name as string,
           url: uf?.url as string,
           uploadedOn: new Date().toISOString() as string,
         }));
 
       await firebase.saveMultipleInDB(saveData);
-      setFiles((p) => []);
+      setFiles(() => [] as Array<ExtFile>);
       toast.success('File(s) Saved!');
     } catch (error) {
       console.trace(error);

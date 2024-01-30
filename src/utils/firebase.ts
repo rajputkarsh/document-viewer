@@ -1,5 +1,16 @@
 import { initializeApp, FirebaseApp } from 'firebase/app';
-import { doc, setDoc, getFirestore, Firestore } from 'firebase/firestore';
+import {
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  collection,
+  getFirestore,
+  DocumentData,
+  Firestore,
+  QuerySnapshot,
+  DocumentSnapshot,
+} from 'firebase/firestore';
 import {
   uploadBytes,
   getDownloadURL,
@@ -8,7 +19,8 @@ import {
   FirebaseStorage,
 } from 'firebase/storage';
 
-interface FileData {
+export interface FileData {
+  id: string;
   name: string;
   url: string;
   uploadedOn: string;
@@ -35,10 +47,7 @@ class FirebaseFunctions {
 
   saveInDB(data: FileData) {
     try {
-      return setDoc(
-        doc(this.#db, 'filestorage', `${data.name}-${data.uploadedOn}`),
-        data
-      );
+      return setDoc(doc(this.#db, 'filestorage', `${data.id}`), data);
     } catch (error) {
       console.trace(error);
       alert('Something went wrong while saving in Database');
@@ -51,6 +60,29 @@ class FirebaseFunctions {
     } catch (error) {
       console.trace(error);
       alert('Something went wrong while saving in Database');
+    }
+  }
+
+  getMultipleFilesFromDB():
+    | Promise<QuerySnapshot<DocumentData, DocumentData>>
+    | undefined {
+    try {
+      return getDocs(collection(this.#db, 'filestorage'));
+    } catch (error) {
+      console.trace(error);
+      alert('Something went wrong while fetching data from Database');
+    }
+  }
+
+  getFileFromDb(
+    id: string
+  ): Promise<DocumentSnapshot<DocumentData, DocumentData>> | undefined {
+    try {
+      return getDoc(doc(this.#db, 'filestorage', id));
+      return;
+    } catch (error) {
+      console.trace(error);
+      alert('Something went wrong while fetching file from Database');
     }
   }
 
