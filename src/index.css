@@ -7,7 +7,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
+#root {
   width: 100vw;
   min-height: 100vh;
 }
@@ -54,6 +56,12 @@ button:focus-visible {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-inline: 1.5rem;
+
+  .title {
+    margin-block-end: 2rem;
+    margin-inline: 2rem;
+  }
 
   .fui-dropzone-root {
     max-width: 80%;
@@ -63,6 +71,28 @@ button:focus-visible {
     margin-block-start: 1rem;
     background-color: #535bf2;
     color: #fff;
+  }
+}
+
+.file-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1.5rem;
+
+  .title {
+    margin-block-end: 2rem;
+    margin-inline: 2rem;
+  }
+  button {
+    margin-block-start: 1rem;
+    background-color: #535bf2;
+    color: #fff;
+  }
+
+  .file-data {
+    width: 100%;
   }
 }
 
@@ -85,4 +115,36 @@ button:focus-visible {
     left: calc(50% - 150px);
     position: fixed;
   }
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+iframe {
+  width: 100vw;
+  height: 100vh;
 }
